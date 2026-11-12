@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumush Qo'zibayeva — Bo'lajak Dasturchi | IT Park O'quvchisi</title>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        mint: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.7);
+        }
+
+        /* Typing Cursor Blink */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+            color: #10b981;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Subtle Grid Background */
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: radial-gradient(circle, rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-image: radial-gradient(circle, rgba(129, 140, 248, 0.14) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-600 selection:text-white">
+
+    <!-- ==================== HEADER / NAVBAR ==================== -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Brand / Logo -->
+                <a href="#bosh-sahifa" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-mono font-bold text-lg shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+                        &lt;KQ/&gt;
+                    </div>
+                    <div>
+                        <span class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 dark:text-white block leading-none">
+                            Kumush<span class="text-indigo-600 dark:text-indigo-400">.dev</span>
+                        </span>
+                        <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">IT Park Student</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#bosh-sahifa" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Bosh sahifa</a>
+                    <a href="#men-haqimda" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Men haqimda</a>
+                    <a href="#konikmalar" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Ko'nikmalar</a>
+                    <a href="#loyihalar" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Loyihalar</a>
+                    <a href="#maqsadlar" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Yutuqlar & Maqsadlar</a>
+                    <a href="#boglanish" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Bog'lanish</a>
+                </nav>
+
+                <!-- Right Controls: Theme Toggle & CTA -->
+                <div class="flex items-center gap-3">
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="theme-toggle" aria-label="Mavzuni o'zgartirish" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors border border-slate-200/70 dark:border-slate-700/70">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+
+                    <!-- Desktop Contact Button -->
+                    <a href="#boglanish" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all">
+                        <span>Xabar yozish</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" aria-label="Menyuni ochish" class="lg:hidden w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#bosh-sahifa" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Bosh sahifa</a>
+            <a href="#men-haqimda" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Men haqimda</a>
+            <a href="#konikmalar" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Ko'nikmalar</a>
+            <a href="#loyihalar" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Loyihalar</a>
+            <a href="#maqsadlar" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Yutuqlar & Maqsadlar</a>
+            <a href="#boglanish" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50/70 dark:bg-indigo-950/50">Bog'lanish</a>
+        </div>
+    </header>
+
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section id="bosh-sahifa" class="relative overflow-hidden bg-grid-pattern pt-14 pb-20 lg:pt-24 lg:pb-28">
+        <!-- Ambient Glowing Blobs -->
+        <div class="absolute top-12 left-10 w-72 h-72 bg-indigo-500/20 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-emerald-500/20 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Intro & Typing Animation -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <!-- Status Pill -->
+                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
+                            IT Park O'quvchisi • Ingliz tili B2
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                        Salom! Men <br class="hidden sm:block">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-emerald-500 dark:from-indigo-400 dark:via-violet-400 dark:to-emerald-400">
+                            Kumush Qo'zibayeva
+                        </span>
+                    </h1>
+
+                    <!-- Dynamic Typing Subtitle -->
+                    <div class="h-9 sm:h-10 flex items-center justify-center lg:justify-start">
+                        <span class="font-mono text-lg sm:text-2xl font-bold text-indigo-600 dark:text-emerald-400 typing-cursor" id="typing-text"></span>
+                    </div>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        14 yoshimdan boshlab texnologiyalar va dasturlash olamiga qadam qo'ydim. Hozirda <strong>IT Park</strong>da zamonaviy dasturlash tillarini o'rganmoqdaman va <strong>IELTS</strong> imtihoniga tayyorlanib, kelajakda xalqaro darajadagi kuchli dasturchi bo'lishni maqsad qilganman.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#loyihalar" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-600/25 transition-all hover:-translate-y-0.5">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Loyihalarimni ko'rish</span>
+                        </a>
+                        <button type="button" onclick="openIeltsDemoModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-white border border-slate-200 dark:border-slate-700 font-bold text-sm sm:text-base shadow-sm transition-all">
+                            <i class="fa-solid fa-language text-emerald-500"></i>
+                            <span>IELTS Mini-Ilova Demo</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Highlights -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white" id="hero-age">14 yosh</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">28.09.2012</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-indigo-600 dark:text-indigo-400">IT Park</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Faol o'quvchi</div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">B2 + IELTS</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Ingliz tili</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Code Editor Card -->
+                <div class="lg:col-span-5">
+                    <div class="animate-float bg-slate-900 rounded-3xl border border-slate-800 shadow-2xl overflow-hidden text-left">
+                        <!-- Window Top Bar -->
+                        <div class="bg-slate-800/90 px-5 py-3.5 flex items-center justify-between border-b border-slate-700/80">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            </div>
+                            <span class="font-mono text-xs text-slate-400">kumush_profile.js</span>
+                            <button onclick="copyProfileCode()" title="Kodni nusxalash" class="text-slate-400 hover:text-white text-xs flex items-center gap-1 transition-colors">
+                                <i class="fa-regular fa-copy"></i> <span id="copy-label">Nusxa</span>
+                            </button>
+                        </div>
+
+                        <!-- Code Content -->
+                        <div class="p-6 sm:p-7 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto text-slate-300">
+<pre id="profile-code-snippet"><code><span class="text-violet-400">const</span> <span class="text-sky-300">developer</span> = {
+  <span class="text-slate-400">ism:</span> <span class="text-emerald-400">"Kumush"</span>,
+  <span class="text-slate-400">familiya:</span> <span class="text-emerald-400">"Qo'zibayeva"</span>,
+  <span class="text-slate-400">tugilganKun:</span> <span class="text-amber-300">"28.09.2012"</span>,
+  <span class="text-slate-400">yosh:</span> <span class="text-rose-400" id="code-age">14</span>,
+  <span class="text-slate-400">akademiya:</span> <span class="text-emerald-400">"IT Park Uzbekistan"</span>,
+  <span class="text-slate-400">tillar:</span> {
+    <span class="text-slate-400">onaTili:</span> <span class="text-emerald-400">"O'zbek tili"</span>,
+    <span class="text-slate-400">inglizTili:</span> <span class="text-emerald-400">"B2 Sertifikat ✅"</span>,
+    <span class="text-slate-400">hozirgiMaqsad:</span> <span class="text-amber-300">"IELTS High Band 🎯"</span>
+  },
+  <span class="text-slate-400">kasbiyOrzu:</span> <span class="text-emerald-400">"Senior Software Developer"</span>,
+  <span class="text-sky-300">kodYozish</span>: () => <span class="text-emerald-400">"Kelajakni bugun quramiz! 🚀"</span>
+};</code></pre>
+                        </div>
+
+                        <!-- Terminal Output Footer -->
+                        <div class="bg-slate-950/90 px-6 py-3.5 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
+                            <span class="text-emerald-400 flex items-center gap-2">
+                                <i class="fa-solid fa-terminal"></i> Status: O'rganish va rivojlanishda
+                            </span>
+                            <span class="text-slate-500">UTF-8</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 2. MEN HAQIMDA (ABOUT ME) ==================== -->
+    <section id="men-haqimda" class="py-20 lg:py-28 bg-white dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Info Cards Grid -->
+                <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="w-11 h-11 rounded-xl bg-indigo-100 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tug'ilgan sana</p>
+                        <h4 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">28.09.2012</h4>
+                        <p class="text-xs text-indigo-600 dark:text-indigo-400 mt-1 font-medium">Yosh avlod dasturchisi</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">O'qish maskani</p>
+                        <h4 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">IT Park</h4>
+                        <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-medium">Dasturlash yo'nalishi</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Ingliz tili darajasi</p>
+                        <h4 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">B2 Sertifikat</h4>
+                        <p class="text-xs text-amber-600 dark:text-amber-400 mt-1 font-medium">IELTSga tayyorgarlik</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="w-11 h-11 rounded-xl bg-violet-100 dark:bg-violet-500/15 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg mb-4">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Asosiy maqsad</p>
+                        <h4 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">Software Engineer</h4>
+                        <p class="text-xs text-violet-600 dark:text-violet-400 mt-1 font-medium">Global IT loyihalar</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Personal Story -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-block px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
+                        Men haqimda
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                        Yoshlikdan boshlangan katta IT sayohat va global marralar
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                        Mening ismim <strong>Kumush Qo'zibayeva</strong>, 2012-yil 28-sentabrda tug'ilganman. Texnologiyalar qanday ishlashini tushunish va o'z g'oyalarimni kod orqali hayotga tatbiq etish meni doim ilhomlantirib kelgan. Shu sababli hozirda <strong>IT Park</strong>da dasturlash asoslarini chuqur o'rganmoqdaman.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                        Zamonaviy dasturchi uchun xorijiy til bilish naqadar muhimligini yaxshi bilaman. Shu bois ingliz tilini puxta o'rganib, <strong>B2 darajadagi sertifikatni</strong> qo'lga kiritdim. Hozirda esa bilimlarni yanada mustahkamlab, <strong>IELTS</strong> imtihonidan yuqori ball olish ustida tinimsiz ishlayapman.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-emerald-500"></i> Muammolarga kreativ yechim
+                        </span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-emerald-500"></i> Tez o'rganish qobiliyati
+                        </span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-emerald-500"></i> Texnik ingliz tili (B2)
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. KO'NIKMALAR VA TIL PROGRESSI ==================== -->
+    <section id="konikmalar" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">Ko'nikmalar va Bilimlar</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Dasturlash texnologiyalari va Til darajasi</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-base">
+                    IT Parkdagi amaliy mashg'ulotlar hamda ingliz tili bo'yicha erishgan natijalarim.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left: IT & Programming Skills (7 cols) -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-7 sm:p-9 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                    <div class="flex items-center gap-3 mb-7">
+                        <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-laptop-file"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Dasturlash ko'nikmalari</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">IT Park o'quv dasturi va shaxsiy amaliyot</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                    <i class="fa-brands fa-html5 text-orange-500"></i> HTML5 & Semantik Veb-tuzilma
+                                </span>
+                                <span class="text-indigo-600 dark:text-indigo-400">90%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                    <i class="fa-brands fa-css3-alt text-sky-500"></i> CSS3, Flexbox, Grid & Tailwind CSS
+                                </span>
+                                <span class="text-indigo-600 dark:text-indigo-400">85%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                    <i class="fa-brands fa-js text-amber-400"></i> JavaScript (DOM, Interaktivlik)
+                                </span>
+                                <span class="text-indigo-600 dark:text-indigo-400">75%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 4 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                    <i class="fa-brands fa-python text-blue-500"></i> Python asoslari & Algoritmlar
+                                </span>
+                                <span class="text-indigo-600 dark:text-indigo-400">70%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 5 -->
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-1.5">
+                                <span class="text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                    <i class="fa-brands fa-git-alt text-rose-500"></i> Git, GitHub & Jamoada ishlash
+                                </span>
+                                <span class="text-indigo-600 dark:text-indigo-400">80%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: English B2 & IELTS Roadmap Widget (5 cols) -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-7 sm:p-9 border border-indigo-500/30 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-extrabold">Ingliz tili & IELTS</h3>
+                                    <p class="text-xs text-indigo-200">Xalqaro muloqot va texnik hujjatlar</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs">
+                                B2 SERTIFIKAT
+                            </span>
+                        </div>
+
+                        <!-- B2 Achievement Box -->
+                        <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-award text-amber-400 text-2xl"></i>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">CEFR B2 Sertifikati Mavjud</h4>
+                                    <p class="text-xs text-indigo-200 mt-0.5">Erkin so'zlashish, texnik dokumentatsiya o'qish va yozish ko'nikmasi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IELTS Preparation Breakdown -->
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-3">
+                            IELTS Tayyorgarlik Bo'limlari (Hozirgi jarayon):
+                        </h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+                                <div class="flex justify-between items-center text-xs text-slate-400 mb-1">
+                                    <span>Listening</span>
+                                    <i class="fa-solid fa-headphones text-emerald-400"></i>
+                                </div>
+                                <div class="text-sm font-bold text-white">Amaliyot: Faol</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+                                <div class="flex justify-between items-center text-xs text-slate-400 mb-1">
+                                    <span>Reading</span>
+                                    <i class="fa-solid fa-book-open text-emerald-400"></i>
+                                </div>
+                                <div class="text-sm font-bold text-white">Amaliyot: Faol</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+                                <div class="flex justify-between items-center text-xs text-slate-400 mb-1">
+                                    <span>Writing</span>
+                                    <i class="fa-solid fa-pen-nib text-amber-400"></i>
+                                </div>
+                                <div class="text-sm font-bold text-white">Insholar & Tahlil</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+                                <div class="flex justify-between items-center text-xs text-slate-400 mb-1">
+                                    <span>Speaking</span>
+                                    <i class="fa-solid fa-microphone-lines text-amber-400"></i>
+                                </div>
+                                <div class="text-sm font-bold text-white">Har kungi mashq</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openIeltsDemoModal()" class="mt-6 w-full py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>IELTS So'z Yodlash Ilovasini Sinab Ko'rish</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. MENING LOYIHALARIM (PROJECTS) ==================== -->
+    <section id="loyihalar" class="py-20 lg:py-28 bg-white dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">Portfolio</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Mening O'quv va Amaliy Loyihalarim</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-base max-w-2xl">
+                        IT Parkdagi darslar davomida va mustaqil ravishda yaratgan veb-sayt hamda mini-dasturlarim.
+                    </p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs sm:text-sm font-bold transition-all">
+                        Barchasi
+                    </button>
+                    <button type="button" data-filter="web" class="filter-btn px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs sm:text-sm font-bold transition-all">
+                        Veb-saytlar
+                    </button>
+                    <button type="button" data-filter="app" class="filter-btn px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs sm:text-sm font-bold transition-all">
+                        Ilovalar & O'yinlar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+                
+                <!-- Project 1: IELTS Vocabulary Flashcards -->
+                <div class="project-card group bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="app">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-700 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+                            <i class="fa-solid fa-book-bookmark text-7xl absolute -right-4 -bottom-4 text-white/15 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-center">
+                                <span class="px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm text-xs font-bold">Interaktiv Ilova</span>
+                                <span class="font-mono text-xs bg-white/20 px-2.5 py-1 rounded-lg">JS + Tailwind</span>
+                            </div>
+                            <h3 class="text-2xl font-extrabold">IELTS Vocabulary Trainer</h3>
+                        </div>
+                        <div class="p-7">
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
+                                O'zimning IELTS imtihoniga tayyorgarligim uchun yaratgan interaktiv flesh-kartalar (flashcards) ilovasi. Akademik ingliz tili so'zlari, tarjimasi va misollarni tezkor yodlash imkonini beradi.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">HTML5</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">JavaScript</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">IELTS B2-C1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-7 pb-7">
+                        <button type="button" onclick="openIeltsDemoModal()" class="w-full py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i>
+                            <span>Jonli Demo (Hozir sinab ko'ring)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: FinTrust Buxgalteriya Sayti -->
+                <div class="project-card group bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="web">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-slate-800 to-indigo-950 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+                            <i class="fa-solid fa-chart-pie text-7xl absolute -right-4 -bottom-4 text-white/10 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-center">
+                                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-xs font-bold">Korporativ Veb-sayt</span>
+                                <span class="font-mono text-xs bg-indigo-500/40 px-2.5 py-1 rounded-lg">Responsive UI</span>
+                            </div>
+                            <h3 class="text-2xl font-extrabold">FinTrust Consulting</h3>
+                        </div>
+                        <div class="p-7">
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
+                                Buxgalteriya va moliyaviy konsalting kompaniyasi uchun yaratilgan ko'p funksiyali veb-sayt. Interaktiv narx kalkulyatori, tarif rejalari va ariza qoldirish formasiga ega.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">JS Calculator</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-7 pb-7">
+                        <button type="button" onclick="openProjectDetail('FinTrust Consulting', 'Buxgalteriya kompaniyasi uchun ishlab chiqilgan zamonaviy veb-platforma. Unda mijozlar biznes turini tanlab, oylik xizmat narxini onlayn hisoblashlari mumkin.', ['HTML5', 'Tailwind CSS', 'JavaScript'])" class="w-full py-3.5 px-5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Loyiha tafsilotlari</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Smart Math & Logic Quiz -->
+                <div class="project-card group bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="app">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-indigo-600 to-violet-700 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+                            <i class="fa-solid fa-gamepad text-7xl absolute -right-4 -bottom-4 text-white/15 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-center">
+                                <span class="px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm text-xs font-bold">Mantiqiy O'yin</span>
+                                <span class="font-mono text-xs bg-white/20 px-2.5 py-1 rounded-lg">Algorithm</span>
+                            </div>
+                            <h3 class="text-2xl font-extrabold">IT Park Logic Quiz</h3>
+                        </div>
+                        <div class="p-7">
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
+                                Yosh dasturchilar uchun mantiqiy fikrlash va tezkor hisoblash ko'nikmalarini charxlaydigan mini-viktorina o'yini. Vaqt hisoblagich va ballar tizimi bilan jihozlangan.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">JavaScript ES6</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">DOM Events</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">CSS Animations</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-7 pb-7">
+                        <button type="button" onclick="openProjectDetail('IT Park Logic Quiz', 'Dasturlash mantiqini oshirishga mo‘ljallangan interaktiv test va mini-o‘yin. Har bir to‘g‘ri javob uchun ball beriladi va natijalar saqlanadi.', ['JavaScript', 'CSS3', 'Algoritmlar'])" class="w-full py-3.5 px-5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Loyiha tafsilotlari</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4: Shaxsiy Portfolio v1.0 -->
+                <div class="project-card group bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="web">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-amber-500 to-rose-600 p-6 flex flex-col justify-between text-white relative overflow-hidden">
+                            <i class="fa-solid fa-laptop-code text-7xl absolute -right-4 -bottom-4 text-white/15 group-hover:scale-110 transition-transform"></i>
+                            <div class="flex justify-between items-center">
+                                <span class="px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm text-xs font-bold">Shaxsiy Brend</span>
+                                <span class="font-mono text-xs bg-white/20 px-2.5 py-1 rounded-lg">Dark / Light UI</span>
+                            </div>
+                            <h3 class="text-2xl font-extrabold">Kumush.dev Portfolio</h3>
+                        </div>
+                        <div class="p-7">
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
+                                Hozir siz ko'rib turgan shaxsiy portfolio veb-saytim. Tungi va kunduzgi rejimlar, jonli kod kartochkasi, IELTS mini-ilovasi va barcha qurilmalarga moslashuvchan dizaynga ega.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">HTML5</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300">Vanilla JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-7 pb-7">
+                        <button type="button" onclick="openProjectDetail('Kumush.dev Portfolio', 'Shaxsiy yutuqlarim, IT Parkdagi o‘qish jarayonim va IELTS tayyorgarligimni aks ettiruvchi zamonaviy veb-portfolio.', ['HTML5', 'Tailwind CSS', 'JavaScript'])" class="w-full py-3.5 px-5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Loyiha tafsilotlari</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. YUTUQLAR VA MAQSADLAR (ROADMAP) ==================== -->
+    <section id="maqsadlar" class="py-20 lg:py-28">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">Yo'l xaritasi</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Yutuqlarim va Kelajakdagi Maqsadlarim</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-base">
+                    Har bir kichik qadam katta kelajak poydevoridir.
+                </p>
+            </div>
+
+            <!-- Vertical Timeline -->
+            <div class="relative border-l-2 border-indigo-200 dark:border-indigo-900/80 ml-4 sm:ml-6 space-y-10">
+                
+                <!-- Milestone 1 (Completed) -->
+                <div class="relative pl-8 sm:pl-10">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20 flex items-center justify-center">
+                        <i class="fa-solid fa-check text-[10px] text-white"></i>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-xs font-bold mb-2">
+                            Erishilgan yutuq ✅
+                        </span>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Ingliz tilidan B2 Sertifikati</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                            Ingliz tilini muvaffaqiyatli o'zlashtirib, B2 darajasidagi sertifikatni qo'lga kiritdim. Bu menga xorijiy dasturlash darsliklari va texnik hujjatlarni asl tilida o'qish imkonini berdi.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 (Current) -->
+                <div class="relative pl-8 sm:pl-10">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-indigo-600 ring-4 ring-indigo-600/25 animate-pulse"></div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border-2 border-indigo-500/50 shadow-md">
+                        <span class="inline-block px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-bold mb-2">
+                            Hozirgi jarayon (2026) 🚀
+                        </span>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">IT Parkda Dasturlash & IELTS Tayyorgarlik</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                            IT Parkda veb-dasturlash va algoritmlarni chuqur o'rganish bilan birga, IELTS imtihonidan yuqori ball olish uchun intensiv tayyorgarlik ko'rmoqdaman.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 (Next Goal) -->
+                <div class="relative pl-8 sm:pl-10">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-slate-200 dark:ring-slate-800"></div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 text-xs font-bold mb-2">
+                            Yaqin kelajakdagi maqsad 🎯
+                        </span>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">IELTS High Band & Real Loyihalar</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                            IELTS sertifikatini muvaffaqiyatli qo'lga kiritish, murakkab Full-Stack veb-ilovalarni ishlab chiqish va respublika hamda xalqaro IT olimpiadalarida qatnashish.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 4 (Ultimate Vision) -->
+                <div class="relative pl-8 sm:pl-10">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-slate-200 dark:ring-slate-800"></div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <span class="inline-block px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-500/15 text-violet-700 dark:text-violet-400 text-xs font-bold mb-2">
+                            Katta orzu 🌟
+                        </span>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Professional Software Developer</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                            Nufuzli xalqaro texnologiya kompaniyalarida tajribali dasturchi (Senior Software Engineer) sifatida faoliyat yuritish va O'zbekiston IT rivojiga o'z hissamni qo'shish.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 6. BOG'LANISH (CONTACT) ==================== -->
+    <section id="boglanish" class="py-20 lg:py-28 bg-white dark:bg-slate-900/60 border-t border-slate-200/70 dark:border-slate-800/70">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-800 rounded-3xl p-8 sm:p-12 text-white shadow-2xl overflow-hidden relative">
+                <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+                    <!-- Left Info -->
+                    <div class="lg:col-span-5 space-y-5">
+                        <span class="inline-block px-3.5 py-1 rounded-full bg-white/15 text-xs font-bold uppercase tracking-wider">
+                            Aloqa
+                        </span>
+                        <h2 class="text-3xl font-extrabold leading-tight">
+                            Hamkorlik yoki fikr almashish uchun yozing!
+                        </h2>
+                        <p class="text-indigo-100 text-sm leading-relaxed">
+                            Dasturlash loyihalari, o'quv jamoalari yoki IT hamjamiyatiga oid takliflaringiz bo'lsa, quyidagi forma orqali xabar qoldirishingiz mumkin.
+                        </p>
+
+                        <div class="space-y-3 pt-2 text-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <span>O'zbekiston, IT Park</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <span>kumush.qozibayeva@dev.uz</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 pt-4">
+                            <a href="#" aria-label="Telegram" class="w-10 h-10 rounded-xl bg-white/15 hover:bg-white hover:text-indigo-600 flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-telegram text-lg"></i>
+                            </a>
+                            <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-white/15 hover:bg-white hover:text-indigo-600 flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/15 hover:bg-white hover:text-indigo-600 flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Form -->
+                    <div class="lg:col-span-7 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 rounded-2xl p-6 sm:p-8 shadow-xl">
+                        <form id="portfolio-contact-form" class="space-y-4">
+                            <div>
+                                <label for="sender-name" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Ismingiz *</label>
+                                <input type="text" id="sender-name" required placeholder="Ismingizni kiriting"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-indigo-600">
+                            </div>
+
+                            <div>
+                                <label for="sender-contact" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Telegram yoki Email *</label>
+                                <input type="text" id="sender-contact" required placeholder="@username yoki email@example.com"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-indigo-600">
+                            </div>
+
+                            <div>
+                                <label for="sender-msg" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Xabaringiz *</label>
+                                <textarea id="sender-msg" rows="3" required placeholder="Xabaringizni yozing..."
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:border-indigo-600"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/25 transition-all flex items-center justify-center gap-2">
+                                <span>Xabarni yuborish</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success Feedback -->
+                        <div id="contact-success-box" class="hidden text-center py-6">
+                            <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl mx-auto mb-3">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900 dark:text-white">Xabaringiz yuborildi!</h4>
+                            <p id="contact-success-text" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5"></p>
+                            <button type="button" onclick="resetPortfolioForm()" class="mt-4 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold hover:bg-slate-200 transition-colors">
+                                Yana xabar yozish
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-10 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800/80 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2.5">
+                <span class="font-mono font-bold text-indigo-600 dark:text-indigo-400">&lt;KQ/&gt;</span>
+                <span class="text-sm font-bold text-slate-800 dark:text-slate-200">Kumush Qo'zibayeva</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+                IT Park O'quvchisi • Ingliz tili B2 • &copy; 2026 Barcha huquqlar himoyalangan.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================== INTERACTIVE MODAL 1: IELTS FLASHCARDS DEMO ==================== -->
+    <div id="ielts-modal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button type="button" onclick="closeIeltsDemoModal()" aria-label="Yopish" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-rose-500 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-2.5 mb-4">
+                <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+                    Kumush's Mini-App
+                </span>
+                <span class="text-xs text-slate-400 font-mono" id="card-counter">1 / 5</span>
+            </div>
+
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-1">IELTS Vocabulary Trainer</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Tarjimasini ko'rish uchun kartochka ustiga bosing.</p>
+
+            <!-- Flashcard Display -->
+            <div onclick="flipFlashcard()" class="cursor-pointer min-h-[190px] rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-700 text-white p-6 flex flex-col items-center justify-center text-center shadow-lg transition-transform active:scale-95 select-none">
+                <span id="flashcard-badge" class="text-[11px] uppercase tracking-widest bg-white/20 px-3 py-0.5 rounded-full mb-3">English (C1/B2)</span>
+                <h4 id="flashcard-main" class="text-2xl font-extrabold tracking-tight">Perseverance</h4>
+                <p id="flashcard-sub" class="text-xs text-indigo-100 mt-3 italic">"Success in coding requires perseverance."</p>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-between gap-3 mt-6">
+                <button type="button" onclick="prevFlashcard()" class="flex-1 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Oldingi
+                </button>
+                <button type="button" onclick="flipFlashcard()" class="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors">
+                    <i class="fa-solid fa-rotate mr-1"></i> Tarjima
+                </button>
+                <button type="button" onclick="nextFlashcard()" class="flex-1 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    Keyingi <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== INTERACTIVE MODAL 2: PROJECT DETAILS ==================== -->
+    <div id="project-modal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button type="button" onclick="closeProjectModal()" aria-label="Yopish" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-rose-500 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span class="inline-block px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 text-xs font-bold mb-3">
+                Loyiha haqida
+            </span>
+            <h3 id="modal-project-title" class="text-2xl font-extrabold text-slate-900 dark:text-white mb-3">Loyiha nomi</h3>
+            <p id="modal-project-desc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5"></p>
+            
+            <div class="mb-6">
+                <p class="text-xs font-bold uppercase text-slate-400 mb-2">Ishlatilgan texnologiyalar:</p>
+                <div id="modal-project-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <button type="button" onclick="closeProjectModal()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition-colors">
+                Yopish
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Accurate Age Calculation (Born: 28.09.2012)
+            function calculateExactAge(birthYear, birthMonth, birthDay) {
+                const today = new Date();
+                let age = today.getFullYear() - birthYear;
+                const m = today.getMonth() + 1 - birthMonth;
+                if (m < 0 || (m === 0 && today.getDate() < birthDay)) {
+                    age--;
+                }
+                return age;
+            }
+            const kumushAge = calculateExactAge(2012, 9, 28);
+            document.getElementById('hero-age').textContent = `${kumushAge} yosh`;
+            document.getElementById('code-age').textContent = kumushAge;
+
+            // 2. Dark / Light Theme Toggle
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            // Check saved preference or system preference
+            if (localStorage.getItem('kumush-theme') === 'dark' || (!localStorage.getItem('kumush-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlEl.classList.add('dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                htmlEl.classList.toggle('dark');
+                const isDark = htmlEl.classList.contains('dark');
+                localStorage.setItem('kumush-theme', isDark ? 'dark' : 'light');
+                if (isDark) {
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+            });
+
+            // 3. Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // 4. Typing Effect in Hero Section
+            const phrases = [
+                "Bo'lajak Software Developer 💻",
+                "IT Park O'quvchisi 🚀",
+                "Ingliz tili B2 | IELTS Nomzodi 🎯",
+                "Kreativ Veb-Dasturchi ✨"
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingEl = document.getElementById('typing-text');
+
+            function typeLoop() {
+                const currentPhrase = phrases[phraseIndex];
+                if (isDeleting) {
+                    typingEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let speed = isDeleting ? 45 : 85;
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    speed = 1800; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    speed = 400;
+                }
+
+                setTimeout(typeLoop, speed);
+            }
+            typeLoop();
+
+            // 5. Project Filter Buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-indigo-600', 'text-white');
+                        b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                    });
+                    btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                    btn.classList.add('bg-indigo-600', 'text-white');
+
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // 6. Contact Form Handler
+            const contactForm = document.getElementById('portfolio-contact-form');
+            const successBox = document.getElementById('contact-success-box');
+            const successText = document.getElementById('contact-success-text');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('sender-name').value.trim();
+                const contact = document.getElementById('sender-contact').value.trim();
+
+                if (!name || !contact) return;
+
+                successText.innerHTML = `Rahmat, <strong>${name}</strong>! Xabaringiz qabul qilindi. Tez orada <strong>${contact}</strong> orqali javob beraman.`;
+                contactForm.classList.add('hidden');
+                successBox.classList.remove('hidden');
+            });
+        });
+
+        // Copy Code Snippet Function
+        function copyProfileCode() {
+            const codeText = document.getElementById('profile-code-snippet').innerText;
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = codeText;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+
+            const label = document.getElementById('copy-label');
+            label.textContent = 'Nusxalandi!';
+            setTimeout(() => { label.textContent = 'Nusxa'; }, 2000);
+        }
+
+        // Reset Contact Form
+        function resetPortfolioForm() {
+            const form = document.getElementById('portfolio-contact-form');
+            const box = document.getElementById('contact-success-box');
+            form.reset();
+            box.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+
+        // ==================== IELTS FLASHCARDS MINI-APP LOGIC ====================
+        const ieltsWords = [
+            {
+                en: "Perseverance",
+                uz: "Qat'iyatlilik, sabot",
+                example: '"Success in programming requires daily perseverance."'
+            },
+            {
+                en: "Inevitable",
+                uz: "Muqarrar, muqarrar ravishda sodir bo'ladigan",
+                example: '"With continuous practice, high IELTS scores are inevitable."'
+            },
+            {
+                en: "Proficiency",
+                uz: "Mahorat, yuqori darajadagi bilim",
+                example: '"She achieved B2 proficiency in English at a young age."'
+            },
+            {
+                en: "Innovative",
+                uz: "Innovatsion, yangilik yaratuvchi",
+                example: '"IT Park encourages young students to build innovative apps."'
+            },
+            {
+                en: "Dedication",
+                uz: "Fidoyilik, astoydil intilish",
+                example: '"Her dedication to coding and English is truly inspiring."'
+            }
+        ];
+
+        let currentCardIdx = 0;
+        let isFlipped = false;
+
+        function renderFlashcard() {
+            const item = ieltsWords[currentCardIdx];
+            const badge = document.getElementById('flashcard-badge');
+            const main = document.getElementById('flashcard-main');
+            const sub = document.getElementById('flashcard-sub');
+            const counter = document.getElementById('card-counter');
+
+            counter.textContent = `${currentCardIdx + 1} / ${ieltsWords.length}`;
+
+            if (!isFlipped) {
+                badge.textContent = "English (IELTS Vocabulary)";
+                main.textContent = item.en;
+                sub.textContent = item.example;
+            } else {
+                badge.textContent = "O'zbekcha tarjimasi";
+                main.textContent = item.uz;
+                sub.textContent = `So'z: ${item.en}`;
+            }
+        }
+
+        function flipFlashcard() {
+            isFlipped = !isFlipped;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            currentCardIdx = (currentCardIdx + 1) % ieltsWords.length;
+            isFlipped = false;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            currentCardIdx = (currentCardIdx - 1 + ieltsWords.length) % ieltsWords.length;
+            isFlipped = false;
+            renderFlashcard();
+        }
+
+        function openIeltsDemoModal() {
+            currentCardIdx = 0;
+            isFlipped = false;
+            renderFlashcard();
+            document.getElementById('ielts-modal').classList.remove('hidden');
+        }
+
+        function closeIeltsDemoModal() {
+            document.getElementById('ielts-modal').classList.add('hidden');
+        }
+
+        // ==================== PROJECT DETAILS MODAL LOGIC ====================
+        function openProjectDetail(title, desc, tags) {
+            document.getElementById('modal-project-title').textContent = title;
+            document.getElementById('modal-project-desc').textContent = desc;
+            const tagsContainer = document.getElementById('modal-project-tags');
+            tagsContainer.innerHTML = '';
+            tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300';
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
